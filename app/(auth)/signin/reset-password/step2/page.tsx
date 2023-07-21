@@ -8,16 +8,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ResetPasswordStep2Form } from "@/components/auth/reset-password-form-step2";
+import { Shell } from "@/components/shell";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`${process.env.NEXT_PUBLIC_APP_URL}`),
   title: "Reset Password",
   description: "Enter your email to reset your password",
 };
 
 export default function ResetPasswordStep2Page() {
   return (
-    <div className='mx-auto mb-16 mt-20 justify-center max-w-lg'>
+    <Shell className='max-w-lg'>
       <Card>
         <CardHeader className='space-y-1'>
           <CardTitle className='text-2xl'>Reset password</CardTitle>
@@ -29,6 +29,6 @@ export default function ResetPasswordStep2Page() {
           <ResetPasswordStep2Form />
         </CardContent>
       </Card>
-    </div>
+    </Shell>
   );
 }

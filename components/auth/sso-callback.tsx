@@ -2,8 +2,8 @@
 
 import * as React from "react";
 import { useClerk } from "@clerk/nextjs";
-import { Loader2 } from "lucide-react";
 
+import { Icons } from "@/components/icons";
 import { type SSOCallbackPageProps } from "@/app/(auth)/sso-callback/page";
 
 export default function SSOCallback({ searchParams }: SSOCallbackPageProps) {
@@ -20,7 +20,7 @@ export default function SSOCallback({ searchParams }: SSOCallbackPageProps) {
       aria-describedby='loading-description'
       className='flex items-center justify-center'
     >
-      <Loader2 className='h-16 w-16 animate-spin' aria-hidden='true' />
+      <Icons.spinner className='h-16 w-16 animate-spin' aria-hidden='true' />
     </div>
   );
 }

@@ -1,5 +1,7 @@
 import { type Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { currentUser } from "@clerk/nextjs";
 
 import {
   Card,
@@ -11,15 +13,19 @@ import {
 } from "@/components/ui/card";
 import { OAuthSignIn } from "@/components/auth/oauth-signin";
 import { SignInForm } from "@/components/auth/signin-form";
+import { Shell } from "@/components/shell";
 
 export const metadata: Metadata = {
   title: "Sign In",
   description: "Sign in to your account",
 };
 
-export default function SignInPage() {
+export default async function SignInPage() {
+  const user = await currentUser();
+  if (user) redirect("/");
+
   return (
-    <div className='mx-auto mb-16 mt-20 justify-center max-w-lg'>
+    <Shell className='max-w-lg'>
       <Card>
         <CardHeader className='space-y-1'>
           <CardTitle className='text-2xl'>Sign in</CardTitle>
@@ -63,6 +69,6 @@ export default function SignInPage() {
           </Link>
         </CardFooter>
       </Card>
-    </div>
+    </Shell>
   );
 }

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { useMounted } from "@/hooks/use-mounted";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Loader2 } from "lucide-react";
+import { Icons } from "@/components/icons";
 
 export function LogOutButtons() {
   const router = useRouter();
@@ -31,7 +31,9 @@ export function LogOutButtons() {
             className='w-full'
             disabled={isPending}
           >
-            {isPending && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
+            {isPending && (
+              <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
+            )}
             Log out
           </Button>
         </SignOutButton>

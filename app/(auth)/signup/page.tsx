@@ -1,5 +1,7 @@
 import { type Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { currentUser } from "@clerk/nextjs";
 
 import {
   Card,
@@ -11,16 +13,19 @@ import {
 } from "@/components/ui/card";
 import { OAuthSignIn } from "@/components/auth/oauth-signin";
 import { SignUpForm } from "@/components/auth/signup-form";
+import { Shell } from "@/components/shell";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`${process.env.NEXT_PUBLIC_APP_URL}`),
   title: "Sign Up",
   description: "Sign up for an account",
 };
 
-export default function SignUpPage() {
+export default async function SignUpPage() {
+  const user = await currentUser();
+  if (user) redirect("/");
+
   return (
-    <div className='mx-auto mb-16 mt-20 justify-center max-w-lg'>
+    <Shell className='max-w-lg'>
       <Card>
         <CardHeader className='space-y-1'>
           <CardTitle className='text-2xl'>Sign up</CardTitle>
@@ -55,6 +60,6 @@ export default function SignUpPage() {
           </div>
         </CardFooter>
       </Card>
-    </div>
+    </Shell>
   );
 }

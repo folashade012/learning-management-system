@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { isClerkAPIResponseError, useSignIn } from "@clerk/nextjs";
+import { isClerkAPIResponseError, useSignIn, currentUser } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 import { type OAuthStrategy } from "@clerk/types";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -21,6 +22,9 @@ export function OAuthSignIn() {
   const { signIn, isLoaded: signInLoaded } = useSignIn();
 
   async function oauthSignIn(provider: OAuthStrategy) {
+    const user = await currentUser();
+    if (user) redirect("/");
+
     if (!signInLoaded) return null;
     try {
       setIsLoading(provider);
