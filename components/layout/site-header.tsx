@@ -1,8 +1,6 @@
 import Link from "next/link";
 import type { User } from "@clerk/nextjs/dist/types/server";
 
-// import { dashboardConfig } from "@/config/dashboard"
-// import { siteConfig } from "@/config/site"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -16,10 +14,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 // import { CartSheet } from "@/components/cart/cart-sheet"
-// import { Combobox } from "@/components/combobox"
+import { Combobox } from "@/components/combobox";
 import { Icons } from "@/components/icons";
-// import { MainNav } from "@/components/layouts/main-nav"
-// import { MobileNav } from "@/components/layouts/mobile-nav"
+import { MainNav } from "@/components/layout/main-nav";
 
 interface SiteHeaderProps {
   user: User | null;
@@ -36,15 +33,11 @@ export function SiteHeader({ user }: SiteHeaderProps) {
   return (
     <header className='sticky top-0 z-40 w-full border-b bg-background'>
       <div className='container flex h-16 items-center'>
-        {/* <MainNav items={siteConfig.mainNav} /> */}
-        {/* <MobileNav
-          mainNavItems={siteConfig.mainNav}
-          sidebarNavItems={dashboardConfig.sidebarNav}
-        /> */}
+        <MainNav />
         <div className='flex flex-1 items-center justify-end space-x-4'>
           <nav className='flex items-center space-x-2'>
-            {/* <Combobox /> */}
-            {/* <CartSheet /> */}
+            <Combobox />
+
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>

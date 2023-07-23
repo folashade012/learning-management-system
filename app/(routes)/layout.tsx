@@ -1,7 +1,7 @@
 import { currentUser } from "@clerk/nextjs";
 
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
 
 interface LobbyLayoutProps {
   children: React.ReactNode;

@@ -18,6 +18,7 @@ import {
   LogOut,
   ShoppingCart,
   Image,
+  Search,
   X,
   type Icon as LucideIcon,
   type LucideProps,
@@ -45,6 +46,7 @@ export const Icons = {
   settings: Settings,
   logout: LogOut,
   cart: ShoppingCart,
+  search: Search,
   placeholder: Image,
 
   google: ({ ...props }: LucideProps) => (
