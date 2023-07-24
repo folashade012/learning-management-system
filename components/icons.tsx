@@ -19,6 +19,7 @@ import {
   ShoppingCart,
   Image,
   Search,
+  DollarSign,
   X,
   type Icon as LucideIcon,
   type LucideProps,
@@ -48,6 +49,7 @@ export const Icons = {
   cart: ShoppingCart,
   search: Search,
   placeholder: Image,
+  dollarSign: DollarSign,
 
   google: ({ ...props }: LucideProps) => (
     <svg
