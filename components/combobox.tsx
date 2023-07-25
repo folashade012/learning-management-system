@@ -66,15 +66,15 @@ export function Combobox() {
         onClick={() => setIsOpen(true)}
       >
         <Icons.search className='h-4 w-4 xl:mr-2' aria-hidden='true' />
-        <span className='hidden xl:inline-flex'>Search courses...</span>
-        <span className='sr-only'>Search courses</span>
+        <span className='hidden xl:inline-flex'>Search for anything...</span>
+        <span className='sr-only'>Search for anything</span>
         <kbd className='pointer-events-none absolute right-1.5 top-2 hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 xl:flex'>
           <span className='text-xs'>Ctrl</span>K
         </kbd>
       </Button>
       <CommandDialog position='top' open={isOpen} onOpenChange={setIsOpen}>
         <CommandInput
-          placeholder='Search courses...'
+          placeholder='Search for anything...'
           value={query}
           onValueChange={setQuery}
         />
@@ -82,7 +82,7 @@ export function Combobox() {
           <CommandEmpty
             className={cn(isPending ? "hidden" : "py-6 text-center text-sm")}
           >
-            No courses found.
+            No item found.
           </CommandEmpty>
           {isPending ? (
             <div className='space-y-1 overflow-hidden px-1 py-2'>
