@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/form";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
+import ImageUpload from "@/components/ui/image-upload";
 
 const formSchema = z.object({
   name: z.string().min(1),
@@ -87,11 +88,30 @@ const CreateCoursePage: React.FC<CourseFormProps> = ({ initialData }) => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className='w-[600px]  flex flex-col items-center gap-4'
+          className='  flex flex-col justify-center w-full items-center gap-4'
         >
-          <div className='w-[500px]'>{/* cloudinary */}</div>
+          <div className='w-[500px] mx-auto'>
+            <FormField
+              control={form.control}
+              name='imageSrc'
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Image</FormLabel>
+                  <FormControl>
+                    <ImageUpload
+                      value={field.value}
+                      disabled={loading}
+                      onChange={() => field.onChange(field.value)}
+                      onRemove={() => field.onChange([(field.value = "")])}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
 
-          <div className='flex flex-col gap-4 py-4 w-full mx-auto'>
+          <div className='flex w-[600px] flex-col gap-4 py-4 mx-auto'>
             <FormField
               control={form.control}
               name='name'
