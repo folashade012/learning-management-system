@@ -87,13 +87,23 @@ export function SiteHeader({ user }: SiteHeaderProps) {
                         <DropdownMenuShortcut>⌘D</DropdownMenuShortcut>
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem asChild disabled>
-                      <Link href='/dashboard/settings'>
-                        <Icons.settings
+                    <DropdownMenuItem asChild>
+                      <Link href='/create'>
+                        <Icons.file
                           className='mr-2 h-4 w-4'
                           aria-hidden='true'
                         />
-                        Settings
+                        Create Course
+                        <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild disabled>
+                      <Link href='/dashboard/settings'>
+                        <Icons.cap
+                          className='mr-2 h-4 w-4'
+                          aria-hidden='true'
+                        />
+                        My Learning
                         <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
                       </Link>
                     </DropdownMenuItem>

@@ -1,6 +1,6 @@
 import { type z } from "zod";
 
-import { type userPrivateMetadataSchema } from "@/lib/validations/auth";
+import { type userPrivateMetadataSchema } from "@/libs/validations/auth";
 import { type Icons } from "@/components/icons";
 
 export interface NavItem {

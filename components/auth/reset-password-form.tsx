@@ -9,7 +9,7 @@ import { Icons } from "@/components/icons";
 import { toast } from "sonner";
 import type { z } from "zod";
 
-import { checkEmailSchema } from "@/lib/validations/auth";
+import { checkEmailSchema } from "@/libs/validations/auth";
 import { Button } from "@/components/ui/button";
 import {
   Form,

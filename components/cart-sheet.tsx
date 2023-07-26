@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { formatPrice } from "@/lib/utils";
+import { formatPrice } from "@/libs/utils";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";

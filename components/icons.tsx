@@ -17,9 +17,11 @@ import {
   Settings,
   LogOut,
   ShoppingCart,
+  FilePlus,
   Image,
   Search,
   DollarSign,
+  GraduationCap,
   X,
   type Icon as LucideIcon,
   type LucideProps,
@@ -50,6 +52,8 @@ export const Icons = {
   search: Search,
   placeholder: Image,
   dollarSign: DollarSign,
+  file: FilePlus,
+  cap: GraduationCap,
 
   google: ({ ...props }: LucideProps) => (
     <svg

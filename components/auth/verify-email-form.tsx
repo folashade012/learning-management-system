@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import type { z } from "zod";
 
-import { verfifyEmailSchema } from "@/lib/validations/auth";
+import { verfifyEmailSchema } from "@/libs/validations/auth";
 import { Button } from "@/components/ui/button";
 import {
   Form,

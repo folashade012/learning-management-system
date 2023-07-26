@@ -4,7 +4,7 @@ import * as React from "react";
 import { useRouter } from "next/navigation";
 import { SignOutButton } from "@clerk/nextjs";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utils";
 import { useMounted } from "@/hooks/use-mounted";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
