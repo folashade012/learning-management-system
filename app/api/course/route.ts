@@ -11,7 +11,9 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json();
-  const { name, author, imageSrc, videoSrc, description, price } = body;
+  console.log(body);
+
+  const { name, author, imageSrc, description, price } = body;
 
   if (!name || !author || !imageSrc || !price || !description) {
     return NextResponse.error();
@@ -21,7 +23,6 @@ export async function POST(request: Request) {
     data: {
       name,
       author,
-      videoSrc,
       imageSrc,
       description,
       price,

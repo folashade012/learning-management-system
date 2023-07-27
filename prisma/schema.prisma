@@ -27,8 +27,7 @@ model Course {
   createdAt   DateTime @default(now())
   imageSrc    String
   author      String
-  videoSrc    String
-  price       String
+  price       Float
   description String
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String   @db.ObjectId

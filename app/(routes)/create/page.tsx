@@ -28,10 +28,9 @@ import ImageUpload from "@/components/ui/image-upload";
 
 const formSchema = z.object({
   name: z.string().min(1),
-  price: z.coerce.number().min(1),
+  price: z.coerce.number().min(0),
   description: z.string().min(1),
   imageSrc: z.string().min(1),
-  videoSrc: z.string().min(1).optional(),
   author: z.string().min(1),
 });
 
@@ -90,18 +89,17 @@ const CreateCoursePage: React.FC<CourseFormProps> = ({ initialData }) => {
           onSubmit={form.handleSubmit(onSubmit)}
           className='  flex flex-col justify-center w-full items-center gap-4'
         >
-          <div className='w-[500px] mx-auto'>
+          <div className='w-[600px] flex justify-center'>
             <FormField
               control={form.control}
               name='imageSrc'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Image</FormLabel>
                   <FormControl>
                     <ImageUpload
                       value={field.value}
                       disabled={loading}
-                      onChange={() => field.onChange(field.value)}
+                      onChange={(e) => field.onChange(e)}
                       onRemove={() => field.onChange([(field.value = "")])}
                     />
                   </FormControl>
