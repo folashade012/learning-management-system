@@ -1,5 +1,5 @@
-import { Shell } from "@/components/shell";
-import SliderMain from "@/components/slider-main";
+import { Shell } from "@/app/components/shell";
+import SliderMain from "@/app/components/slider-main";
 
 const images = ["/images/hero1.jpg", "/images/hero2.jpg"];
 

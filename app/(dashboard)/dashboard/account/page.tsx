@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
-import { Header } from "@/components/ui/header";
-import { Shell } from "@/components/shell";
-import { UserProfile } from "@/components/user-profile";
+import { Header } from "@/app/components/ui/header";
+import { Shell } from "@/app/components/shell";
+import { UserProfile } from "@/app/components/user-profile";
 
 export const metadata: Metadata = {
   title: "Account",

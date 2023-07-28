@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
 import { currentUser } from "@clerk/nextjs";
 
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { SidebarNav } from "@/components/layout/sidebar-nav";
-import { SiteFooter } from "@/components/layout/site-footer";
-import { SiteHeader } from "@/components/layout/site-header";
+import { ScrollArea } from "@/app/components/ui/scroll-area";
+import { SidebarNav } from "@/app/components/layout/sidebar-nav";
+import { SiteFooter } from "@/app/components/layout/site-footer";
+import { SiteHeader } from "@/app/components/layout/site-header";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;

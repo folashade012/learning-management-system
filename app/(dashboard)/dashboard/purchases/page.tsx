@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { currentUser } from "@clerk/nextjs";
 
-import { Header } from "@/components/ui/header";
-import { Shell } from "@/components/shell";
+import { Header } from "@/app/components/ui/header";
+import { Shell } from "@/app/components/shell";
 
 export const metadata: Metadata = {
   title: "Purchases",

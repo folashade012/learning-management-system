@@ -9,10 +9,10 @@ import { useParams, useRouter } from "next/navigation";
 import { Course } from "@prisma/client";
 import { toast } from "sonner";
 
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Shell } from "@/components/shell";
-import { Header } from "@/components/ui/header";
+import { Input } from "@/app/components/ui/input";
+import { Button } from "@/app/components/ui/button";
+import { Shell } from "@/app/components/shell";
+import { Header } from "@/app/components/ui/header";
 import {
   Form,
   FormControl,
@@ -21,10 +21,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Separator } from "@/components/ui/separator";
-import { Textarea } from "@/components/ui/textarea";
-import ImageUpload from "@/components/ui/image-upload";
+} from "@/app/components/ui/form";
+import { Separator } from "@/app/components/ui/separator";
+import { Textarea } from "@/app/components/ui/textarea";
+import ImageUpload from "@/app/components/ui/image-upload";
 
 const formSchema = z.object({
   name: z.string().min(1),

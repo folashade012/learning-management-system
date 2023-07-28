@@ -1,6 +1,6 @@
-import { Skeleton } from "@/components/ui/skeleton";
-import { Header } from "@/components/ui/header";
-import { Shell } from "@/components/shell";
+import { Skeleton } from "@/app/components/ui/skeleton";
+import { Header } from "@/app/components/ui/header";
+import { Shell } from "@/app/components/shell";
 
 export default function AccountLoading() {
   return (

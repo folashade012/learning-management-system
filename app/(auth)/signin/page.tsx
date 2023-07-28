@@ -10,10 +10,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { OAuthSignIn } from "@/components/auth/oauth-signin";
-import { SignInForm } from "@/components/auth/signin-form";
-import { Shell } from "@/components/shell";
+} from "@/app/components/ui/card";
+import { OAuthSignIn } from "@/app/components/auth/oauth-signin";
+import { SignInForm } from "@/app/components/auth/signin-form";
+import { Shell } from "@/app/components/shell";
 
 export const metadata: Metadata = {
   title: "Sign In",

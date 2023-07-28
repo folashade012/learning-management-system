@@ -1,6 +1,6 @@
-import { LogOutButtons } from "@/components/auth/logout-buttons";
-import { Header } from "@/components/ui/header";
-import { Shell } from "@/components/shell";
+import { LogOutButtons } from "@/app/components/auth/logout-buttons";
+import { Header } from "@/app/components/ui/header";
+import { Shell } from "@/app/components/shell";
 
 // Running out of edge function execution units on vercel free plan
 // export const runtime = "edge"

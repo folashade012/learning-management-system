@@ -6,9 +6,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { ResetPasswordStep2Form } from "@/components/auth/reset-password-form-step2";
-import { Shell } from "@/components/shell";
+} from "@/app/components/ui/card";
+import { ResetPasswordStep2Form } from "@/app/components/auth/reset-password-form-step2";
+import { Shell } from "@/app/components/shell";
 
 export const metadata: Metadata = {
   title: "Reset Password",

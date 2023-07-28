@@ -1,7 +1,7 @@
 import { currentUser } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
-import prisma from "@/libs/prismadb";
+import prisma from "@/app/libs/prismadb";
 
 export async function POST(request: Request) {
   const user = await currentUser();
@@ -11,13 +11,18 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json();
+
+  console.log("user", user);
+
   console.log(body);
 
   const { name, author, imageSrc, description, price } = body;
 
-  if (!name || !author || !imageSrc || !price || !description) {
-    return NextResponse.error();
-  }
+  Object.keys(body).forEach((value: any) => {
+    if (!body[value]) {
+      NextResponse.error();
+    }
+  });
 
   const course = await prisma.course.create({
     data: {
@@ -29,6 +34,8 @@ export async function POST(request: Request) {
       userId: user.id,
     },
   });
+
+  console.log(course);
 
   return NextResponse.json(course);
 }

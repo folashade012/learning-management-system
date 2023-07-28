@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { AspectRatio } from "@/app/components/ui/aspect-ratio";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
