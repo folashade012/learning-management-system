@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { currentUser } from "@clerk/nextjs";
+// import { currentUser } from "@clerk/nextjs";
 
 import { ScrollArea } from "@/app/components/ui/scroll-area";
 import { SidebarNav } from "@/app/components/layout/sidebar-nav";
@@ -13,11 +13,11 @@ interface DashboardLayoutProps {
 export default async function DashboardLayout({
   children,
 }: DashboardLayoutProps) {
-  const user = await currentUser();
+  // const user = await currentUser();
 
-  if (!user) {
-    redirect("/signin");
-  }
+  // if (!user) {
+  //   redirect("/signin");
+  // }
 
   const sidebarNav = [
     {

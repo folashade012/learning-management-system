@@ -1,51 +1,34 @@
 import { type Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { currentUser } from "@clerk/nextjs";
 
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/app/components/ui/card";
-import { OAuthSignIn } from "@/app/components/auth/oauth-signin";
-import { SignInForm } from "@/app/components/auth/signin-form";
+import { LoginForm } from "@/app/components/auth/login-form";
 import { Shell } from "@/app/components/shell";
 
 export const metadata: Metadata = {
-  title: "Sign In",
+  title: "Login",
   description: "Sign in to your account",
 };
 
-export default async function SignInPage() {
-  const user = await currentUser();
-  if (user) redirect("/");
+export default async function LoginPage() {
+  // const user = await currentUser();
+  // if (user) redirect("/");
 
   return (
     <Shell className='max-w-lg'>
       <Card>
         <CardHeader className='space-y-1'>
-          <CardTitle className='text-2xl'>Sign in</CardTitle>
-          <CardDescription>
-            Choose your preferred sign in method
-          </CardDescription>
+          <CardTitle className='text-2xl'>Login</CardTitle>
         </CardHeader>
         <CardContent className='grid gap-4'>
-          <OAuthSignIn />
-          <div className='relative'>
-            <div className='absolute inset-0 flex items-center'>
-              <span className='w-full border-t' />
-            </div>
-            <div className='relative flex justify-center text-xs uppercase'>
-              <span className='bg-background px-2 text-muted-foreground'>
-                Or continue with
-              </span>
-            </div>
-          </div>
-          <SignInForm />
+          <LoginForm />
         </CardContent>
         <CardFooter className='flex flex-wrap items-center justify-between gap-2'>
           <div className='text-sm text-muted-foreground'>
@@ -53,16 +36,16 @@ export default async function SignInPage() {
               Don&apos;t have an account?
             </span>
             <Link
-              aria-label='Sign up'
-              href='/signup'
+              aria-label='Register'
+              href='/register'
               className='text-primary underline-offset-4 transition-colors hover:underline'
             >
-              Sign up
+              Register
             </Link>
           </div>
           <Link
             aria-label='Reset password'
-            href='/signin/reset-password'
+            href='/login/reset-password'
             className='text-sm text-primary underline-offset-4 transition-colors hover:underline'
           >
             Reset password

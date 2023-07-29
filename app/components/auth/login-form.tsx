@@ -2,11 +2,12 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { isClerkAPIResponseError, useSignUp } from "@clerk/nextjs";
+import { signIn } from "next-auth/react";
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 import type { z } from "zod";
 
 import { authSchema } from "@/app/libs/validations/auth";
@@ -24,10 +25,9 @@ import { PasswordInput } from "@/app/components/ui/password-input";
 
 type Inputs = z.infer<typeof authSchema>;
 
-export function SignUpForm() {
+export function LoginForm() {
   const router = useRouter();
-  const { isLoaded, signUp } = useSignUp();
-  const [isPending, startTransition] = React.useTransition();
+  const [loading, setLoading] = useState(false);
 
   // react-hook-form
   const form = useForm<Inputs>({
@@ -39,32 +39,31 @@ export function SignUpForm() {
   });
 
   function onSubmit(data: Inputs) {
-    if (!isLoaded) return;
+    setLoading(true);
 
-    startTransition(async () => {
-      try {
-        await signUp.create({
-          emailAddress: data.email,
-          password: data.password,
-        });
+    signIn("credentials", {
+      ...data,
+      redirect: false,
+    })
+      .then((callback) => {
+        if (callback?.ok) {
+          toast.success("Logged In");
+          router.push("/");
+          router.refresh();
+        }
 
-        // Send email verification code
-        await signUp.prepareEmailAddressVerification({
-          strategy: "email_code",
-        });
-
-        router.push("/signup/verify-email");
-        // toast.success("Check your email", {
-        //   description: "We sent you a 6-digit verification code.",
-        // })
-      } catch (error) {
+        if (callback?.error) {
+          throw new Error("Wrong Credentials");
+        }
+      })
+      .catch((err) => {
         const unknownError = "Something went wrong, please try again.";
-
-        isClerkAPIResponseError(error)
-          ? toast.error(error.errors[0]?.longMessage ?? unknownError)
-          : toast.error(unknownError);
-      }
-    });
+        toast.error(unknownError);
+        throw new Error(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }
 
   return (
@@ -99,12 +98,12 @@ export function SignUpForm() {
             </FormItem>
           )}
         />
-        <Button disabled={isPending}>
-          {isPending && (
+        <Button disabled={loading}>
+          {loading && (
             <Loader2 className='mr-2 h-4 w-4 animate-spin' aria-hidden='true' />
           )}
-          Continue
-          <span className='sr-only'>Continue to email verification page</span>
+          Login
+          <span className='sr-only'>Login</span>
         </Button>
       </form>
     </Form>
