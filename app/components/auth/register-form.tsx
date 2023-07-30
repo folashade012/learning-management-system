@@ -41,7 +41,6 @@ export function RegisterForm() {
 
   function onSubmit(data: Inputs) {
     setLoading(true);
-
     axios
       .post("/api/register", data)
       .then(() => {
@@ -113,7 +112,7 @@ export function RegisterForm() {
           {loading && (
             <Loader2 className='mr-2 h-4 w-4 animate-spin' aria-hidden='true' />
           )}
-          Sign up
+          Register
         </Button>
       </form>
     </Form>
