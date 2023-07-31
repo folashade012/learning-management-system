@@ -10,7 +10,7 @@ import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import type { z } from "zod";
 
-import { authSchema } from "@/app/libs/validations/auth";
+import { authLogin } from "@/app/libs/validations/auth";
 import { Button } from "@/app/components/ui/button";
 import {
   Form,
@@ -23,7 +23,7 @@ import {
 import { Input } from "@/app/components/ui/input";
 import { PasswordInput } from "@/app/components/ui/password-input";
 
-type Inputs = z.infer<typeof authSchema>;
+type Inputs = z.infer<typeof authLogin>;
 
 export function LoginForm() {
   const router = useRouter();
@@ -31,7 +31,7 @@ export function LoginForm() {
 
   // react-hook-form
   const form = useForm<Inputs>({
-    resolver: zodResolver(authSchema),
+    resolver: zodResolver(authLogin),
     defaultValues: {
       email: "",
       password: "",
@@ -40,6 +40,7 @@ export function LoginForm() {
 
   function onSubmit(data: Inputs) {
     setLoading(true);
+    console.log(data);
 
     signIn("credentials", {
       ...data,
@@ -49,10 +50,11 @@ export function LoginForm() {
         if (callback?.ok) {
           toast.success("Logged In");
           router.push("/");
-          router.refresh();
+          // router.refresh();
         }
 
         if (callback?.error) {
+          toast.error(callback.error);
           throw new Error("Wrong Credentials");
         }
       })
