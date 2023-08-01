@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import { Header } from "@/app/components/ui/header";
 import { Shell } from "@/app/components/shell";
-import { UserProfile } from "@/app/components/user-profile";
 
 export const metadata: Metadata = {
   title: "Account",
@@ -18,9 +17,7 @@ export default function AccountPage() {
         size='sm'
       />
 
-      <div className='w-full overflow-hidden'>
-        <UserProfile />
-      </div>
+      <div className='w-full overflow-hidden'></div>
     </Shell>
   );
 }

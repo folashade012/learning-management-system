@@ -40,7 +40,6 @@ export function LoginForm() {
 
   function onSubmit(data: Inputs) {
     setLoading(true);
-    console.log(data);
 
     signIn("credentials", {
       ...data,

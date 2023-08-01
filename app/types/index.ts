@@ -1,4 +1,5 @@
 import { type z } from "zod";
+import { Course, User } from "@prisma/client";
 
 import { type userPrivateMetadataSchema } from "@/app/libs/validations/auth";
 import { type Icons } from "@/app/components/icons";
@@ -37,3 +38,13 @@ export interface DataTableSearchableColumn<TData> {
   id: keyof TData;
   title: string;
 }
+
+export type SafeUser = Omit<User, "createdAt" | "updatedAt"> & {
+  createdAt: string;
+  updatedAt: string;
+  imageUrl?: string;
+};
+
+export type safeCourse = Omit<Course, "createdAt"> & {
+  createdAt: string;
+};
