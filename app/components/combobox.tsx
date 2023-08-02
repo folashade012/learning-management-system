@@ -3,6 +3,11 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 
+import { useSearchParams } from "next/navigation";
+import qs from "query-string";
+
+import getAllCourses from "../actions/getAllCourses";
+
 import { cn } from "@/app/libs/utils";
 import { useDebounce } from "@/app/hooks/use-debounce";
 import { Button } from "@/app/components/ui/button";
@@ -17,20 +22,49 @@ import {
 import { Skeleton } from "@/app/components/ui/skeleton";
 import { Icons } from "@/app/components/icons";
 
+interface CourseProp {
+  id: String;
+  name: String;
+  author: String;
+}
+
 export function Combobox() {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
   const [query, setQuery] = React.useState("");
   const debouncedQuery = useDebounce(query, 300);
-  const [data, setData] = React.useState<{}[] | null>(null);
+  const [data, setData] = React.useState<CourseProp[] | null>(null);
   const [isPending, startTransition] = React.useTransition();
+
+  const params = useSearchParams();
+
+  React.useEffect(() => {
+    let currentQuery = {};
+
+    if (params) {
+      currentQuery = qs.parse(params.toString());
+    }
+    const updatedQuery: any = {
+      ...currentQuery,
+      result: query,
+    };
+
+    const url = qs.stringifyUrl(
+      {
+        url: "/",
+        query: updatedQuery,
+      },
+      { skipNull: true }
+    );
+    router.push(`/course/${url}`);
+  }, [query]);
 
   React.useEffect(() => {
     if (debouncedQuery.length === 0) setData(null);
 
     if (debouncedQuery.length > 0) {
       startTransition(async () => {
-        // const data = await filterProductsAction(debouncedQuery);
+        // const data = await getAllCourses(debouncedQuery);
         setData(data);
       });
     }
@@ -91,7 +125,18 @@ export function Combobox() {
               <Skeleton className='h-8 rounded-sm' />
             </div>
           ) : (
-            <div>result</div>
+            <CommandGroup>
+              {data?.map((item, index) => (
+                <CommandItem
+                  key={index}
+                  onSelect={() =>
+                    handleSelect(() => router.push(`/course/${item.id}`))
+                  }
+                >
+                  {item.name}
+                </CommandItem>
+              ))}
+            </CommandGroup>
           )}
         </CommandList>
       </CommandDialog>
