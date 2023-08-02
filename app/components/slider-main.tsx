@@ -24,7 +24,7 @@ export default function SliderMain({ images }: CarouselProps) {
   };
 
   return (
-    <div className='relative pb-16'>
+    <div className='relative'>
       <div>
         <button
           onClick={prevImage}
@@ -38,7 +38,7 @@ export default function SliderMain({ images }: CarouselProps) {
           className='h-[500px] object-cover w-full rounded-md'
         />
         {current === 1 && (
-          <div className='absolute top-[20%] left-[5%] bg-white p-6 max-w-[450px] rounded-md'>
+          <div className='absolute top-[20%] left-[5%] bg-white dark:bg-black p-6 max-w-[450px] rounded-md'>
             <h1 className='my-4 text-[2rem] font-bold'>
               Learning that gets you
             </h1>
@@ -49,7 +49,7 @@ export default function SliderMain({ images }: CarouselProps) {
         )}
 
         {current === 0 && (
-          <div className='absolute top-[20%] left-[5%] bg-white p-6 max-w-[450px] rounded-md'>
+          <div className='absolute top-[20%] left-[5%] bg-white dark:bg-black p-6 max-w-[450px] rounded-md'>
             <h1 className='my-4 text-[2rem] font-bold'>
               Unlock the power of learning.
             </h1>

@@ -1,4 +1,4 @@
-import { currentUser } from "@clerk/nextjs";
+import currentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 
 import prisma from "@/app/libs/prismadb";
@@ -11,10 +11,6 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json();
-
-  console.log("user", user);
-
-  console.log(body);
 
   const { name, author, imageSrc, description, price } = body;
 
@@ -34,8 +30,6 @@ export async function POST(request: Request) {
       userId: user.id,
     },
   });
-
-  console.log(course);
 
   return NextResponse.json(course);
 }

@@ -10,9 +10,13 @@ export function formatPrice(
   currency: "USD" | "EUR" | "GBP" | "BDT" = "USD",
   notation: "compact" | "engineering" | "scientific" | "standard" = "standard"
 ) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency,
-    notation,
-  }).format(Number(price));
+  if (price === 0) {
+    return "Free";
+  } else {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency,
+      notation,
+    }).format(Number(price));
+  }
 }
