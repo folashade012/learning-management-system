@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { SafeUser } from "@/app/types";
 import { signOut } from "next-auth/react";
@@ -26,9 +27,10 @@ import { MainNav } from "@/app/components/layout/main-nav";
 
 interface SiteHeaderProps {
   user: SafeUser | null;
+  basketItems: any;
 }
 
-export function SiteHeader({ user }: SiteHeaderProps) {
+export function SiteHeader({ user, basketItems }: SiteHeaderProps) {
   const initials = `${user?.name?.charAt(0) ?? ""} ${
     user?.name?.charAt(1) ?? ""
   }`;
@@ -41,7 +43,7 @@ export function SiteHeader({ user }: SiteHeaderProps) {
         <div className='flex flex-1 items-center justify-end space-x-4'>
           <nav className='flex items-center space-x-2'>
             <Combobox />
-            <CartSheet />
+            <CartSheet basketItems={basketItems} currentUser={user} />
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>

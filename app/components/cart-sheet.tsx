@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SafeUser } from "../types";
 
 import { formatPrice } from "@/app/libs/utils";
 import { Badge } from "@/app/components/ui/badge";
@@ -13,24 +14,21 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/app/components/ui/sheet";
-// import { UpdateCart } from "@/components/cart/update-cart"
 import { Icons } from "@/app/components/icons";
-// import { getCartAction } from "@/app/_actions/cart"
+import CartButton from "./ui/cart-button";
 
-export async function CartSheet() {
-  // const cartLineItems = await getCartAction()
+interface CartSheetProps {
+  basketItems: any;
+  currentUser: SafeUser | null;
+}
 
-  // const itemCount = cartLineItems.reduce(
-  //   (total, item) => total + Number(item.quantity),
-  //   0
-  // )
+export async function CartSheet({ basketItems, currentUser }: CartSheetProps) {
+  const itemCount = Number(basketItems.length);
 
-  const itemCount = 0;
-  const cartTotal = 0;
-  // const cartTotal = cartLineItems.reduce(
-  //   (total, item) => total + Number(item.quantity) * Number(item.price),
-  //   0
-  // )
+  const cartTotal = basketItems.reduce(
+    (total: any, item: any) => total + Number(item.price),
+    0
+  );
 
   return (
     <Sheet>
@@ -61,71 +59,40 @@ export async function CartSheet() {
           <>
             <div className='flex flex-1 flex-col gap-5 overflow-hidden'>
               <ScrollArea className='h-full'>
-                {/* <div className="flex flex-col gap-5 pr-6">
-                  {cartLineItems.map((item) => (
-                    <div key={item.id} className="space-y-3">
-                      <div className="flex items-center space-x-4">
-                        <div className="relative h-16 w-16 overflow-hidden rounded">
-                          {item?.images?.length ? (
-                            <Image
-                              src={
-                                item.images[0]?.url ??
-                                "/images/product-placeholder.webp"
-                              }
-                              alt={item.images[0]?.name ?? item.name}
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              fill
-                              className="absolute object-cover"
-                              loading="lazy"
-                            />
-                          ) : (
-                            <div className="flex h-full items-center justify-center bg-secondary">
-                              <Icons.placeholder
-                                className="h-4 w-4 text-muted-foreground"
-                                aria-hidden="true"
-                              />
-                            </div>
-                          )}
+                <div className='flex flex-col gap-5 pr-6'>
+                  {basketItems.map((item: any) => (
+                    <div key={item.id} className='space-y-3'>
+                      <div className='flex items-center space-x-4'>
+                        <div className='relative h-16 w-16 overflow-hidden rounded'>
+                          <Image
+                            src={item.imageSrc}
+                            alt={item.name}
+                            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                            fill
+                            className='absolute object-cover'
+                            loading='lazy'
+                          />
                         </div>
-                        <div className="flex flex-1 flex-col gap-1 self-start text-sm">
-                          <span className="line-clamp-1">{item.name}</span>
-                          <span className="line-clamp-1 text-muted-foreground">
-                            {formatPrice(item.price)} x {item.quantity} ={" "}
-                            {formatPrice(
-                              (
-                                Number(item.price) * Number(item.quantity)
-                              ).toFixed(2)
-                            )}
-                          </span>
-                          <span className="line-clamp-1 text-xs capitalize text-muted-foreground">
-                            {`${item.category} ${
-                              item.subcategory ? `/ ${item.subcategory}` : ""
-                            }`}
+                        <div className='flex flex-1 flex-col gap-1 self-start text-sm'>
+                          <span className='line-clamp-1'>{item.name}</span>
+                          <span className='line-clamp-1 text-muted-foreground'>
+                            {formatPrice(item.price)} ={" "}
+                            {formatPrice(Number(item.price).toFixed(2))}
                           </span>
                         </div>
-                        <UpdateCart cartLineItem={item} />
+                        <CartButton
+                          courseId={item.id}
+                          currentUser={currentUser}
+                        />
                       </div>
                       <Separator />
                     </div>
                   ))}
-                </div> */}
+                </div>
               </ScrollArea>
             </div>
             <div className='grid gap-1.5 pr-6 text-sm'>
-              <Separator className='mb-2' />
-              <div className='flex'>
-                <span className='flex-1'>Subtotal</span>
-                <span>{formatPrice(cartTotal.toFixed(2))}</span>
-              </div>
-              <div className='flex'>
-                <span className='flex-1'>Shipping</span>
-                <span>Free</span>
-              </div>
-              <div className='flex'>
-                <span className='flex-1'>Taxes</span>
-                <span>Calculated at checkout</span>
-              </div>
-              <Separator className='mt-2' />
+              <Separator className='my-2' />
               <div className='flex'>
                 <span className='flex-1'>Total</span>
                 <span>{formatPrice(cartTotal.toFixed(2))}</span>
