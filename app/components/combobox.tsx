@@ -49,14 +49,14 @@ export function Combobox() {
       result: query,
     };
 
-    const url = qs.stringifyUrl(
-      {
-        url: "/",
-        query: updatedQuery,
-      },
-      { skipNull: true }
-    );
-    router.push(`/course/${url}`);
+    // const url = qs.stringifyUrl(
+    //   {
+    //     url: "/",
+    //     query: updatedQuery,
+    //   },
+    //   { skipNull: true }
+    // );
+    // router.push(`/course/${url}`);
   }, [query]);
 
   React.useEffect(() => {
