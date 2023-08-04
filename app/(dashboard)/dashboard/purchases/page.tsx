@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { currentUser } from "@clerk/nextjs";
+import getCurrentUser from "@/app/actions/getCurrentUser";
 
 import { Header } from "@/app/components/ui/header";
 import { Shell } from "@/app/components/shell";
@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 };
 
 export default async function PurchasesPage() {
-  const user = await currentUser();
+  const user = await getCurrentUser();
 
   if (!user) {
-    redirect("/signin");
+    redirect("/login");
   }
 
   return (

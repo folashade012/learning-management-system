@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
-// import { currentUser } from "@clerk/nextjs";
+import getCurrentUser from "@/app/actions/getCurrentUser";
+import getBasketItems from "@/app/actions/getBasketItems";
 
 import { ScrollArea } from "@/app/components/ui/scroll-area";
 import { SidebarNav } from "@/app/components/layout/sidebar-nav";
@@ -13,11 +14,12 @@ interface DashboardLayoutProps {
 export default async function DashboardLayout({
   children,
 }: DashboardLayoutProps) {
-  // const user = await currentUser();
+  const user = await getCurrentUser();
+  const basketItems = await getBasketItems();
 
-  // if (!user) {
-  //   redirect("/signin");
-  // }
+  if (!user) {
+    redirect("/login");
+  }
 
   const sidebarNav = [
     {
@@ -37,7 +39,7 @@ export default async function DashboardLayout({
 
   return (
     <div className='flex min-h-screen flex-col'>
-      <SiteHeader user={user} />
+      <SiteHeader user={user} basketItems={basketItems} />
       <div className='container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10'>
         <aside className='fixed top-14 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r md:sticky md:block'>
           <ScrollArea className='py-6 pr-6 lg:py-8'>
