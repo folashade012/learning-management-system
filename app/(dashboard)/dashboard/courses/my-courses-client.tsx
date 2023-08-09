@@ -1,8 +1,8 @@
 "use client";
 
 import axios from "axios";
-import { SafeUser, safeCourse } from "../types";
-import { Button } from "../components/ui/button";
+import { SafeUser, safeCourse } from "@/app/types";
+import { Button } from "@/app/components/ui/button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { FormEvent, useState } from "react";
@@ -54,7 +54,7 @@ export default function MyCourseClient({ data }: CourseCardProps) {
       </div>
 
       <div className='flex flex-col items-start gap-1'>
-        <div className='font-light flex items-center gap-8'>
+        <div className='font-light flex items-center gap-8 my-4 capitalize'>
           <span>{data.name}</span>
         </div>
 
@@ -62,7 +62,7 @@ export default function MyCourseClient({ data }: CourseCardProps) {
           <Button disabled={isLoading} onClick={onDelete}>
             Delete
           </Button>
-          <Button onClick={() => router.push(`/my-courses/${data.id}`)}>
+          <Button onClick={() => router.push(`/dashboard/courses/${data.id}`)}>
             View
           </Button>
         </div>
