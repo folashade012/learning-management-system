@@ -5,11 +5,7 @@ import { Shell } from "@/app/components/shell";
 export default function PurchasesLoading() {
   return (
     <Shell variant='sidebar'>
-      <Header
-        title='Purchases'
-        description='Manage your purchases.'
-        size='sm'
-      />
+      <Header title='My Courses' description='Manage your courses.' size='sm' />
       <div className='grid gap-10 rounded-lg border p-4'>
         <div className='space-y-2'>
           <Skeleton className='h-5 w-20' />
