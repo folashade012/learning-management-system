@@ -30,6 +30,13 @@ export default async function DashboardLayout({
     },
 
     {
+      title: "My Courses",
+      href: "/dashboard/courses",
+      icon: "library",
+      items: [],
+    },
+
+    {
       title: "Purchases",
       href: "/dashboard/purchases",
       icon: "dollarSign",

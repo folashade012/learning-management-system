@@ -26,6 +26,7 @@ import {
   type Icon as LucideIcon,
   type LucideProps,
   ShieldCheck,
+  Library,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -56,6 +57,7 @@ export const Icons = {
   file: FilePlus,
   cap: GraduationCap,
   brand: ShieldCheck,
+  library: Library,
 
   google: ({ ...props }: LucideProps) => (
     <svg
