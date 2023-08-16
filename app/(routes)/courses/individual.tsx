@@ -61,10 +61,9 @@ export default function Induvidual({
             <CardFooter className='flex gap-1 justify-between'>
               <CartButton courseId={courseId} currentUser={currentUser} />
               <Button type='button' variant='outline'>
-                Buy now
+                Enroll now
               </Button>
             </CardFooter>
-            <CardFooter>30 day money back guarantee</CardFooter>
           </Card>
         </div>
       </div>

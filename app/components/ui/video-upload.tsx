@@ -6,7 +6,6 @@ import { useCallback } from "react";
 import ReactPlayer from "react-player";
 
 import { Button } from "@/app/components/ui/button";
-import Image from "next/image";
 import { ImagePlus, Trash } from "lucide-react";
 
 declare global {
@@ -37,7 +36,7 @@ const VideoUpload: React.FC<VideoUploadProps> = ({
     <div>
       {value && (
         <div className='mb-4 flex items-center gap-4'>
-          <div className='relative w-[200px] h-[200px] rounded-md overflow-hidden'>
+          <div className='relative w-[640px] h-[360px] rounded-md overflow-hidden'>
             <div className='z-10 absolute top-2 right-2'>
               <Button
                 type='button'

@@ -3,25 +3,10 @@
 import { Input } from "@/app/components/ui/input";
 import ImageUpload from "@/app/components/ui/image-upload";
 import { useRouter } from "next/navigation";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import axios from "axios";
-import type { z } from "zod";
-import { Icons } from "@/app/components/icons";
-
-import { authLogin } from "@/app/libs/validations/auth";
-
 import { ChangeEvent, FormEvent, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/app/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/app/components/ui/form";
 
 interface CourseProps {
   name?: string;
@@ -48,8 +33,6 @@ const initialState: InitalStateProps = {
   description: "",
 };
 
-type Inputs = z.infer<typeof authLogin>;
-
 export default function UpdateCourseComponent({
   name,
   price,
@@ -60,18 +43,8 @@ export default function UpdateCourseComponent({
 }: CourseProps) {
   const [state, setState] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-
-  // react-hook-form
-  const form = useForm<Inputs>({
-    resolver: zodResolver(authLogin),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setState({ ...state, [event.target.name]: event.target.value });
@@ -103,77 +76,22 @@ export default function UpdateCourseComponent({
       });
   };
 
-  function onSubmit(data: Inputs) {
-    console.log(data);
-  }
-
   return (
     <div>
-      <div className='w-full flex flex-col md:flex-row pt-6'>
-        <div className='flex flex-1 flex-col justify-center items-center py-4'>
-          <div className='p-4'>
-            <img
-              src={imageSrc}
-              alt='Image'
-              className='max-w-[400px]  bg-gray-50 p-4 border-4 border-black'
-            />
-            <h1 className='capitalize my-2'>{name}</h1>
-            <p>{price}</p>
-            <p className='my-3'>{author}</p>
-            <p>{description}</p>
-          </div>
-        </div>
-        <div className='flex flex-1 flex-col gap-3'>
-          <Button disabled={isLoading}>Add Section</Button>
-          <Button disabled={isLoading}>Update Course Detail</Button>
+      <div className='w-full flex flex-col justify-center items-center py-4'>
+        <div className='p-4'>
+          <img
+            src={imageSrc}
+            alt='Image'
+            className='max-w-[400px]  bg-gray-50 p-4 border-4 border-black'
+          />
+          <h1 className='capitalize my-3'>{name}</h1>
+          <p>{price}</p>
+          <p className='my-3'>{author}</p>
+          <p>{description}</p>
         </div>
       </div>
-
-      <Form {...form}>
-        <form
-          className='grid gap-4'
-          onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
-        >
-          <FormField
-            control={form.control}
-            name='email'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder='johndoe@gmail.com' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name='password'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input placeholder='**********' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button disabled={loading}>
-            {loading && (
-              <Icons.spinner
-                className='mr-2 h-4 w-4 animate-spin'
-                aria-hidden='true'
-              />
-            )}
-            Login
-            <span className='sr-only'>Login</span>
-          </Button>
-        </form>
-      </Form>
-
-      {/* <form onSubmit={onUpdate} className='w-[600px] h-[700px] mx-auto py-12'>
+      <form onSubmit={onUpdate} className='w-[600px] h-[700px] mx-auto py-12'>
         <div>
           <ImageUpload
             value={state.imageSrc}
@@ -220,7 +138,7 @@ export default function UpdateCourseComponent({
             Update
           </Button>
         </div>
-      </form> */}
+      </form>
     </div>
   );
 }

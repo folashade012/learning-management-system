@@ -14,6 +14,9 @@ export default async function getAllCourses(params: any) {
 
     const courses = await prisma.course.findMany({
       where: query,
+      include: {
+        sections: true,
+      },
       orderBy: {
         createdAt: "desc",
       },
