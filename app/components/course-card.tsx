@@ -33,7 +33,7 @@ export default function CourseCard({
 }: CourseCard) {
   const [isPending, startTransition] = React.useTransition();
   return (
-    <Link aria-label={`View ${data.name} details`} href={`/course/${data.id}`}>
+    <Link aria-label={`View ${data.name} details`} href={`/courses/${data.id}`}>
       <Card>
         <CardHeader className='border-b p-0'>
           {data?.imageSrc?.length ? (

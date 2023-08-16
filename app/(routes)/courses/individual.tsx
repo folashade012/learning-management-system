@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { SafeUser } from "../../types";
 import { formatPrice } from "@/app/libs/utils";
@@ -34,6 +35,8 @@ export default function Induvidual({
   description,
   currentUser,
 }: Props) {
+  const router = useRouter();
+
   return (
     <section>
       <div className='bg-muted flex flex-col gap-12 md:flex-row px-6  lg:px-14 py-8 items-start justify-between'>
@@ -60,7 +63,11 @@ export default function Induvidual({
             </CardContent>
             <CardFooter className='flex gap-1 justify-between'>
               <CartButton courseId={courseId} currentUser={currentUser} />
-              <Button type='button' variant='outline'>
+              <Button
+                type='button'
+                variant='outline'
+                onClick={() => router.push(`/course/${courseId}`)}
+              >
                 Enroll now
               </Button>
             </CardFooter>
