@@ -10,7 +10,7 @@ import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import type { z } from "zod";
 
-import { authSchema } from "@/app/libs/validations/auth";
+import { authSchema } from "@/app/lib/validations/auth";
 import { Button } from "@/app/components/ui/button";
 import {
   Form,

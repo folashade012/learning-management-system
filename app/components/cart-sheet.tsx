@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { SafeUser } from "../types";
 
-import { formatPrice } from "@/app/libs/utils";
+import { formatPrice } from "@/app/lib/utils";
 import { Badge } from "@/app/components/ui/badge";
 import { Button } from "@/app/components/ui/button";
 import { ScrollArea } from "@/app/components/ui/scroll-area";

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import type { SidebarNavItem } from "@/app/types";
-import { cn } from "@/app/libs/utils";
+import { cn } from "@/app/lib/utils";
 import { Icons } from "@/app/components/icons";
 
 export interface SidebarNavProps {

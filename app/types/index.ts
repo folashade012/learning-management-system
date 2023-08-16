@@ -1,7 +1,7 @@
 import { type z } from "zod";
 import { Course, User } from "@prisma/client";
 
-import { type userPrivateMetadataSchema } from "@/app/libs/validations/auth";
+import { type userPrivateMetadataSchema } from "@/app/lib/validations/auth";
 import { type Icons } from "@/app/components/icons";
 
 export interface NavItem {

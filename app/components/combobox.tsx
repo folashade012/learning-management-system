@@ -8,7 +8,7 @@ import qs from "query-string";
 
 import getAllCourses from "../actions/getAllCourses";
 
-import { cn } from "@/app/libs/utils";
+import { cn } from "@/app/lib/utils";
 import { useDebounce } from "@/app/hooks/use-debounce";
 import { Button } from "@/app/components/ui/button";
 import {

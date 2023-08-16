@@ -1,4 +1,4 @@
-import prisma from "@/app/libs/prismadb";
+import prisma from "@/app/lib/prismadb";
 
 interface IParams {
   courseId?: string;
@@ -14,6 +14,7 @@ export default async function getCourseById(params: IParams) {
       },
       include: {
         user: true,
+        sections: true,
       },
     });
 

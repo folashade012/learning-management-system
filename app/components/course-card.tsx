@@ -16,7 +16,7 @@ import {
 } from "@/app/components/ui/card";
 import Link from "next/link";
 import { Icons } from "./icons";
-import { formatPrice } from "../libs/utils";
+import { formatPrice } from "../lib/utils";
 import { Button } from "./ui/button";
 
 interface CourseCard {

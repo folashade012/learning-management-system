@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { SafeUser } from "../../types";
-import { formatPrice } from "@/app/libs/utils";
+import { formatPrice } from "@/app/lib/utils";
 
 import { Button } from "../../components/ui/button";
 import {

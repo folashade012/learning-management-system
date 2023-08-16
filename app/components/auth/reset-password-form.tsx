@@ -8,7 +8,7 @@ import { Icons } from "@/app/components/icons";
 import { toast } from "sonner";
 import type { z } from "zod";
 
-import { checkEmailSchema } from "@/app/libs/validations/auth";
+import { checkEmailSchema } from "@/app/lib/validations/auth";
 import { Button } from "@/app/components/ui/button";
 import {
   Form,

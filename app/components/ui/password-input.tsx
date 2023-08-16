@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Eye, EyeOff } from "lucide-react";
 
-import { cn } from "@/app/libs/utils";
+import { cn } from "@/app/lib/utils";
 import { Button } from "@/app/components/ui/button";
 import { Input, type InputProps } from "@/app/components/ui/input";
 
