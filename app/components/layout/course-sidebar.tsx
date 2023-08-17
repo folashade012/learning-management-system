@@ -28,6 +28,7 @@ export function CourseSidebar({ items }: CourseSidebarProps) {
             className='flex w-full space-x-3 cursor-not-allowed items-center p-2 text-muted-foreground '
           >
             <Checkbox />
+            <span>{index + 1}.</span>
             <span className='text-sm'>{item.name}</span>
           </div>
         );

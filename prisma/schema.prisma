@@ -18,6 +18,7 @@ model User {
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
   basketIds      String[] @db.ObjectId
+  completed      String[] @db.ObjectId
   course         Course[]
 }
 
