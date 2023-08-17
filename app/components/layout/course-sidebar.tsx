@@ -1,22 +1,24 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-
 import type { SidebarNavItem } from "@/app/types";
 import { Checkbox } from "@/app/components/ui/checkbox";
 
 interface SidebarProp {
+  id: string;
   url: string;
   name: string;
 }
 
 export interface CourseSidebarProps {
   items: SidebarProp[];
+  completed: any;
 }
 
-export function CourseSidebar({ items }: CourseSidebarProps) {
-  const pathname = usePathname();
-
+export function CourseSidebar({ items, completed }: CourseSidebarProps) {
+  function checkCompleted(id: string) {
+    const exist = completed.includes(id);
+    return exist;
+  }
   if (!items?.length) return null;
 
   return (
@@ -27,7 +29,7 @@ export function CourseSidebar({ items }: CourseSidebarProps) {
             key={index}
             className='flex w-full space-x-3 cursor-not-allowed items-center p-2 text-muted-foreground '
           >
-            <Checkbox />
+            <Checkbox checked={checkCompleted(item.id)} />
             <span>{index + 1}.</span>
             <span className='text-sm'>{item.name}</span>
           </div>
