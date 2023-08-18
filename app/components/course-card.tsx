@@ -34,7 +34,7 @@ export default function CourseCard({
   const [isPending, startTransition] = React.useTransition();
   return (
     <Link aria-label={`View ${data.name} details`} href={`/courses/${data.id}`}>
-      <Card>
+      <Card className='w-[320px]'>
         <CardHeader className='border-b p-0'>
           {data?.imageSrc?.length ? (
             <Image
@@ -61,7 +61,9 @@ export default function CourseCard({
         </CardHeader>
 
         <CardContent className='grid gap-y-3 py-4 px-2'>
-          <CardTitle className='line-clamp-1 capitalize'>{data.name}</CardTitle>
+          <CardTitle className='line-clamp-1 capitalize text-base'>
+            {data.name}
+          </CardTitle>
           <CardDescription className='line-clamp-1'>
             {data.author}
           </CardDescription>

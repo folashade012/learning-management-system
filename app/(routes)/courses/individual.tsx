@@ -41,7 +41,7 @@ export default function Induvidual({
     <section>
       <div className='bg-muted flex flex-col gap-12 md:flex-row px-6  lg:px-14 py-8 items-start justify-between'>
         <div className='mt-0 md:mt-20 flex flex-col gap-2'>
-          <Header title={name} className='capitalize' />
+          <h1 className='font-bold text-3xl'>{name}</h1>
           <h3 className='capitalize'>{author}</h3>
           <p className='capitalize'>{description}</p>
         </div>

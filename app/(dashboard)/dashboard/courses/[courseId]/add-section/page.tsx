@@ -68,7 +68,6 @@ const CreateCoursePage: React.FC<CourseFormProps> = ({ initialData }) => {
   const onSubmit = async (data: CourseFormValues) => {
     try {
       setLoading(true);
-      console.log(data);
       await axios.post(`/api/course`, data);
       toast.success("Section updated successfully");
       router.push("/");

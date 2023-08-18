@@ -1,14 +1,15 @@
 "use client";
 import ReactPlayer from "react-player";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import axios from "axios";
 
 import { Shell } from "@/app/components/shell";
 import { Button } from "@/app/components/ui/button";
 import { Separator } from "@/app/components/ui/separator";
-import axios from "axios";
+import { Icons } from "@/app/components/icons";
 
 interface Section {
   id: string;
@@ -20,14 +21,36 @@ interface Section {
 interface CourseClientProp {
   sections: Section[];
   completed: any;
+  courseId: string;
 }
 
 export default function CourseClient({
   sections,
   completed,
+  courseId,
 }: CourseClientProp) {
   const router = useRouter();
+
+  const [loading, setLoading] = useState(true);
   const [section, setSection] = useState(sections[0]);
+
+  useEffect(() => {
+    setLoading(true);
+    const currentID = completed[completed.length - 1];
+    const currentIndex = sections.findIndex((item) => item.id === currentID);
+
+    console.log(currentIndex + 1);
+    console.log(sections.length);
+
+    if (currentIndex + 1 === sections.length) {
+      setSection(sections[currentIndex]);
+    } else {
+      const progress = sections[currentIndex + 1];
+      setSection(progress);
+    }
+
+    setLoading(false);
+  }, [completed, sections, section]);
 
   const prev = () => {
     if (sections.length === 0) {
@@ -53,7 +76,7 @@ export default function CourseClient({
     const nextSection = sections[currentIndex + 1];
 
     if (!nextSection) {
-      return;
+      router.push(`/quiz/${courseId}`);
     }
 
     try {
@@ -76,21 +99,32 @@ export default function CourseClient({
   }, [sections, router]);
 
   return (
-    <Shell>
-      <h1 className='font-bold capitalize text-lg'>{section.name}</h1>
-      <div className='w-full'>
-        <ReactPlayer
-          url={section.url}
-          width={"853px"}
-          height={"480px"}
-          controls
-        />
-      </div>
-      <Separator />
-      <div className='w-full flex  items-center space-x-10 lg:justify-between  lg:px-7'>
-        <Button onClick={prev}>Prev</Button>
-        <Button onClick={next}>Next</Button>
-      </div>
-    </Shell>
+    <>
+      {loading ? (
+        <div className='w-full h-screen grid place-content-center'>
+          <Icons.spinner
+            className='mr-2 h-8 w-8 mx-auto animate-spin'
+            aria-hidden='true'
+          />
+        </div>
+      ) : (
+        <Shell>
+          <h1 className='font-bold capitalize text-lg'>{section.name}</h1>
+          <div className='w-full'>
+            <ReactPlayer
+              url={section.url}
+              width={"853px"}
+              height={"480px"}
+              controls
+            />
+          </div>
+          <Separator />
+          <div className='w-full flex  items-center space-x-10 lg:justify-between  lg:px-7'>
+            <Button onClick={prev}>Prev</Button>
+            <Button onClick={next}>Next</Button>
+          </div>
+        </Shell>
+      )}
+    </>
   );
 }

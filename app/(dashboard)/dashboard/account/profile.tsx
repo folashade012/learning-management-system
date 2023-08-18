@@ -32,7 +32,7 @@ export default function Profile({ userId, name, email }: ProfileProps) {
 
   function handleChange(event: any) {
     setState({ ...state, [event.target.name]: event.target.value });
-    console.log(event.target.value);
+    // console.log(event.target.value);
   }
 
   const onSubmit = (event: FormEvent) => {

@@ -1,11 +1,12 @@
 import getCourseById from "@/app/actions/getCourseById";
 import getCurrentUser from "@/app/actions/getCurrentUser";
+import getQuizByCourseId from "@/app/actions/getQuizByCourseId";
 
-import CourseClient from "./course-client";
 import { Separator } from "@/app/components/ui/separator";
 import { ScrollArea } from "@/app/components/ui/scroll-area";
 import { MainNav } from "@/app/components/layout/main-nav";
 import { CourseSidebar } from "@/app/components/layout/course-sidebar";
+import QuizClient from "./quiz-client";
 
 interface IParams {
   courseId: string;
@@ -14,6 +15,10 @@ interface IParams {
 export default async function page({ params }: { params: IParams }) {
   const course = await getCourseById(params);
   const currentUser = await getCurrentUser();
+  const quiz = await getQuizByCourseId(params);
+
+  console.log("quiz", quiz);
+  console.log("questions", quiz);
 
   return (
     <div className='flex min-h-screen flex-col'>
@@ -38,11 +43,7 @@ export default async function page({ params }: { params: IParams }) {
           </ScrollArea>
         </aside>
         <div>
-          <CourseClient
-            courseId={course.id}
-            sections={course.sections}
-            completed={currentUser.completed}
-          />
+          <QuizClient data={quiz[0]} />
         </div>
       </div>
     </div>
