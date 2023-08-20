@@ -1,5 +1,3 @@
-import getCourseById from "@/app/actions/getCourseById";
-import getCurrentUser from "@/app/actions/getCurrentUser";
 import getQuizByCourseId from "@/app/actions/getQuizByCourseId";
 
 import { Separator } from "@/app/components/ui/separator";
@@ -13,12 +11,7 @@ interface IParams {
 }
 
 export default async function page({ params }: { params: IParams }) {
-  const course = await getCourseById(params);
-  const currentUser = await getCurrentUser();
-  const quiz = await getQuizByCourseId(params);
-
-  console.log("quiz", quiz);
-  console.log("questions", quiz);
+  const course = await getQuizByCourseId(params);
 
   return (
     <div className='flex min-h-screen flex-col'>
@@ -38,12 +31,12 @@ export default async function page({ params }: { params: IParams }) {
           <ScrollArea className='py-6 pr-6 lg:py-8'>
             <CourseSidebar
               items={course.sections}
-              completed={currentUser?.completed}
+              completed={course.user.completed}
             />
           </ScrollArea>
         </aside>
         <div>
-          <QuizClient data={quiz[0]} />
+          <QuizClient quizzes={course?.quiz[0]} />
         </div>
       </div>
     </div>

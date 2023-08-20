@@ -14,6 +14,7 @@ export default async function getCourseById(params: IParams) {
       },
       include: {
         user: true,
+        sections: true,
         quiz: {
           include: {
             questions: {
