@@ -5,22 +5,22 @@ import { toast } from "sonner";
 
 import { Shell } from "@/app/components/shell";
 import { Button } from "@/app/components/ui/button";
-import { Icons } from "@/app/components/icons";
-import QuizCard from "@/app/components/quiz-card";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
 } from "@/app/components/ui/card";
+import { useRouter } from "next/navigation";
 
 interface QuizClientProp {
   quizzes: any;
 }
 
 export default function QuizClient({ quizzes }: QuizClientProp) {
+  const router = useRouter();
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [questionIndex, setQuestionIndex] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
 
@@ -42,17 +42,36 @@ export default function QuizClient({ quizzes }: QuizClientProp) {
     }, 2000);
   };
 
-  const handleNextQuestion = () => {
-    if (questionIndex < quizzes.questions.length - 1) {
-      setQuestionIndex(questionIndex + 1);
-    }
+  const resetQuiz = () => {
+    setCurrentQuestion(0);
+    setScore(0);
+    setShowScore(false);
   };
 
   return (
     <>
       {showScore ? (
-        <div className='w-full h-screen grid place-content-center'>
-          You scored {score} out of {quizzes.questions.length}
+        <div className='w-full h-screen grid place-content-center gap-4'>
+          <h1 className='font-bold text-lg'>
+            You scored {score} out of {quizzes.questions.length}
+          </h1>
+          <div className='w-full flex  items-center space-x-10 justify-center  lg:px-7'>
+            <Button
+              onClick={() => {
+                resetQuiz;
+              }}
+            >
+              Retake quiz
+            </Button>
+
+            <Button
+              onClick={() => {
+                router.push("/");
+              }}
+            >
+              Home
+            </Button>
+          </div>
         </div>
       ) : (
         <Shell>
@@ -91,15 +110,6 @@ export default function QuizClient({ quizzes }: QuizClientProp) {
                 )
               )}
             </div>
-          </div>
-          <div className='w-full flex  items-center space-x-10 justify-center  lg:px-7'>
-            <Button
-              onClick={() => {
-                handleNextQuestion;
-              }}
-            >
-              Next
-            </Button>
           </div>
         </Shell>
       )}
