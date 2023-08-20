@@ -24,12 +24,18 @@ export default function QuizClient({ quizzes }: QuizClientProp) {
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
 
-  const handleAnswerOptionClick = (isCorrect) => {
+  const handleAnswerOptionClick = (isCorrect: boolean) => {
     if (isCorrect) {
       setScore(score + 1);
       toast.success("Answer is correct.");
     } else {
-      toast.error("Answer is wrong.");
+      toast("Answer is wrong.", {
+        style: {
+          background: "red",
+        },
+        className: "my-toast text-white",
+        descriptionClassName: "my-toast-description",
+      });
     }
 
     setTimeout(function () {

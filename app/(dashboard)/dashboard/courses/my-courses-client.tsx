@@ -65,13 +65,13 @@ export default function MyCourseClient({ data }: CourseCardProps) {
           <Button onClick={() => router.push(`/dashboard/courses/${data.id}`)}>
             View
           </Button>
-          <Button
+          {/* <Button
             onClick={() =>
               router.push(`/dashboard/courses/${data.id}/add-section`)
             }
           >
             Add section
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
