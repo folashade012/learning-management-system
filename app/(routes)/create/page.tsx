@@ -24,68 +24,70 @@ import {
   FormMessage,
 } from "@/app/components/ui/form";
 import { Separator } from "@/app/components/ui/separator";
-import { Textarea } from "@/app/components/ui/textarea";
-import ImageUpload from "@/app/components/ui/image-upload";
+// import { Textarea } from "@/app/components/ui/textarea";
+// import ImageUpload from "@/app/components/ui/image-upload";
 
-const formSchema = z.object({
-  name: z.string().min(1),
-  price: z.coerce.number().min(0),
-  description: z.string().min(1),
-  imageSrc: z.string().min(1),
-  author: z.string().min(1),
-});
+// const formSchema = z.object({
+//   name: z.string().min(1),
+//   price: z.coerce.number().min(0),
+//   description: z.string().min(1),
+//   imageSrc: z.string().min(1),
+//   author: z.string().min(1),
+// });
 
-type CourseFormValues = z.infer<typeof formSchema>;
+// type CourseFormValues = z.infer<typeof formSchema>;
 
-interface CourseFormProps {
-  initialData: safeCourse | null;
-}
+// interface CourseFormProps {
+//   initialData: safeCourse | null;
+// }
 
-const CreateCoursePage: React.FC<CourseFormProps> = ({ initialData }) => {
+// React.FC<CourseFormProps> = ({ initialData })
+
+const CreateCoursePage = () => {
   const params = useParams();
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
 
-  const defaultValues = initialData
-    ? {
-        ...initialData,
-        price: parseFloat(String(initialData?.price)),
-      }
-    : {
-        name: "",
-        description: "",
-        imageSrc: "",
-        author: "",
-        price: 0,
-      };
+  // const defaultValues = initialData
+  //   ? {
+  //       ...initialData,
+  //       price: parseFloat(String(initialData?.price)),
+  //     }
+  //   : {
+  //       name: "",
+  //       description: "",
+  //       imageSrc: "",
+  //       author: "",
+  //       price: 0,
+  //     };
 
-  const form = useForm<CourseFormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues,
-  });
+  // const form = useForm<CourseFormValues>({
+  //   resolver: zodResolver(formSchema),
+  //   defaultValues,
+  // });
 
-  const onSubmit = async (data: CourseFormValues) => {
-    try {
-      setLoading(true);
-      await axios.post("/api/course", data);
-      toast.success("Course created successfully");
-      router.push("/");
-    } catch (error: any) {
-      error instanceof Error
-        ? toast.error(error.message)
-        : toast.error("Something went wrong, please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const onSubmit = async (data: CourseFormValues) => {
+  //   try {
+  //     setLoading(true);
+  //     await axios.post("/api/course", data);
+  //     toast.success("Course created successfully");
+  //     router.push("/");
+  //   } catch (error: any) {
+  //     error instanceof Error
+  //       ? toast.error(error.message)
+  //       : toast.error("Something went wrong, please try again.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <Shell>
       <Header title='Create course' />
       <Separator />
 
-      <Form {...form}>
+      {/* <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className='  flex flex-col justify-center w-full items-center gap-4'
@@ -189,7 +191,7 @@ const CreateCoursePage: React.FC<CourseFormProps> = ({ initialData }) => {
             Create Course
           </Button>
         </form>
-      </Form>
+      </Form> */}
     </Shell>
   );
 };
