@@ -18,6 +18,8 @@ export default function QuizClient({ data }: QuizClientProp) {
 
   const [loading, setLoading] = useState(false);
 
+  const [question, setQuestion] = useState(data);
+
   return (
     <>
       {loading ? (
