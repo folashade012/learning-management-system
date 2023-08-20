@@ -24,24 +24,21 @@ import {
 } from "@/app/components/ui/form";
 import { Separator } from "@/app/components/ui/separator";
 import { Textarea } from "@/app/components/ui/textarea";
-import ImageUpload from "@/app/components/ui/image-upload";
 import VideoUpload from "@/app/components/ui/video-upload";
 
 const formSchema = z.object({
   name: z.string().min(1),
-  price: z.coerce.number().min(0),
   description: z.string().min(1),
-  imageSrc: z.string().min(1),
-  author: z.string().min(1),
+  videoSrc: z.string().min(1),
 });
 
 type CourseFormValues = z.infer<typeof formSchema>;
 
 interface CourseFormProps {
-  initialData: Course | null;
+  initialData: object;
 }
 
-const CreateCoursePage: React.FC<CourseFormProps> = ({ initialData }) => {
+const AddSection: React.FC<CourseFormProps> = ({ initialData }) => {
   const params = useParams();
   const router = useRouter();
 
@@ -50,14 +47,11 @@ const CreateCoursePage: React.FC<CourseFormProps> = ({ initialData }) => {
   const defaultValues = initialData
     ? {
         ...initialData,
-        price: parseFloat(String(initialData?.price)),
       }
     : {
         name: "",
         description: "",
-        imageSrc: "",
-        author: "",
-        price: 0,
+        videoSrc: "",
       };
 
   const form = useForm<CourseFormValues>({
@@ -93,7 +87,7 @@ const CreateCoursePage: React.FC<CourseFormProps> = ({ initialData }) => {
           <div className='w-[600px] flex justify-center'>
             <FormField
               control={form.control}
-              name='imageSrc'
+              name='videoSrc'
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
@@ -157,4 +151,4 @@ const CreateCoursePage: React.FC<CourseFormProps> = ({ initialData }) => {
   );
 };
 
-export default CreateCoursePage;
+export default AddSection;
