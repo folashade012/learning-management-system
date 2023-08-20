@@ -65,7 +65,7 @@ export default function CourseCard({
             {data.name}
           </CardTitle>
           <CardDescription className='line-clamp-1'>
-            {data.author}
+            By {data.author}
           </CardDescription>
           <CardTitle className='line-clamp-2 text-md'>
             {formatPrice(data.price, "GBP")}

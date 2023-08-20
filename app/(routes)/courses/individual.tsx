@@ -13,8 +13,10 @@ import {
   CardFooter,
   CardTitle,
 } from "@/app/components/ui/card";
-import { Header } from "@/app/components/ui/header";
+import { Icons } from "@/app/components/icons";
+
 import CartButton from "@/app/components/ui/cart-button";
+import BackButton from "@/app/components/ui/back-button";
 
 interface Props {
   author: string;
@@ -39,11 +41,12 @@ export default function Induvidual({
 
   return (
     <section>
-      <div className='bg-muted flex flex-col gap-12 md:flex-row px-6  lg:px-14 py-8 items-start justify-between'>
+      <BackButton />
+      <div className='bg-muted flex flex-col gap-12 md:flex-row px-6  lg:px-14 py-8 items-start justify-between rounded-md mt-4'>
         <div className='mt-0 md:mt-20 flex flex-col gap-2'>
           <h1 className='font-bold text-3xl'>{name}</h1>
-          <h3 className='capitalize'>{author}</h3>
-          <p className='capitalize'>{description}</p>
+          <h3 className='capitalize'>By {author}</h3>
+          <p className='max-w-3xl'>{description}</p>
         </div>
 
         <div className='w-full  md:w-[400px]'>

@@ -20,6 +20,7 @@ export default async function page({ params }: { params: IParams }) {
         imageSrc={course?.imageSrc}
         name={course?.name}
         author={course?.author}
+        duration={course?.duration}
         description={course?.description}
       />
     </Shell>

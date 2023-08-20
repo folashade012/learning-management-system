@@ -29,6 +29,7 @@ model Course {
   imageSrc    String
   author      String
   price       Int
+  duration    Int
   description String
   user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String    @db.ObjectId

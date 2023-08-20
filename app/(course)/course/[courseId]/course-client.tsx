@@ -50,7 +50,7 @@ export default function CourseClient({
     }
 
     setLoading(false);
-  }, [completed, sections, section]);
+  }, [completed, sections]);
 
   const prev = () => {
     if (sections.length === 0) {
@@ -76,7 +76,7 @@ export default function CourseClient({
     const nextSection = sections[currentIndex + 1];
 
     if (!nextSection) {
-      router.push(`/quiz/${courseId}`);
+      return router.push(`/quiz/${courseId}`);
     }
 
     try {
@@ -108,22 +108,28 @@ export default function CourseClient({
           />
         </div>
       ) : (
-        <Shell>
-          <h1 className='font-bold capitalize text-lg'>{section.name}</h1>
-          <div className='w-full'>
-            <ReactPlayer
-              url={section.url}
-              width={"853px"}
-              height={"480px"}
-              controls
-            />
-          </div>
+        <div>
+          <Shell>
+            <h1 className='font-bold capitalize text-lg'>{section.name}</h1>
+            <div className='w-full relative pt-[56.25%]'>
+              <ReactPlayer
+                className='absolute top-0 left-0'
+                url={section.url}
+                width='100%'
+                height='100%'
+                controls
+              />
+            </div>
+          </Shell>
+
           <Separator />
-          <div className='w-full flex  items-center space-x-10 lg:justify-between  lg:px-7'>
-            <Button onClick={prev}>Prev</Button>
-            <Button onClick={next}>Next</Button>
-          </div>
-        </Shell>
+          <Shell>
+            <div className='w-full flex  items-center space-x-10 lg:justify-between  lg:px-7'>
+              <Button onClick={prev}>Prev</Button>
+              <Button onClick={next}>Next</Button>
+            </div>
+          </Shell>
+        </div>
       )}
     </>
   );
