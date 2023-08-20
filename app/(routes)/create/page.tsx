@@ -6,7 +6,8 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useParams, useRouter } from "next/navigation";
-import { Course } from "@prisma/client";
+import { safeCourse } from "@/app/types";
+
 import { toast } from "sonner";
 
 import { Input } from "@/app/components/ui/input";
@@ -37,7 +38,7 @@ const formSchema = z.object({
 type CourseFormValues = z.infer<typeof formSchema>;
 
 interface CourseFormProps {
-  initialData: Course | null;
+  initialData: safeCourse | null;
 }
 
 const CreateCoursePage: React.FC<CourseFormProps> = ({ initialData }) => {
