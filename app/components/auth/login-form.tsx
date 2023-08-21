@@ -48,8 +48,8 @@ export function LoginForm() {
       .then((callback) => {
         if (callback?.ok) {
           toast.success("Logged In");
+          router.refresh();
           router.push("/");
-          // router.refresh();
         }
 
         if (callback?.error) {
