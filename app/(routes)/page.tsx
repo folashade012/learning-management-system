@@ -1,6 +1,8 @@
 import getAllCourses from "@/app/actions/getAllCourses";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
+export const dynamic = "force-dynamic";
+
 import { Shell } from "@/app/components/shell";
 import SliderMain from "@/app/components/slider-main";
 import CourseCard from "@/app/components/course-card";

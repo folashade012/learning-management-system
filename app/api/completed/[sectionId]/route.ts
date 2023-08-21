@@ -4,7 +4,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/app/lib/prismadb";
 
 interface IParams {
-  sectionId?: string;
+  sectionId: string;
 }
 
 export async function POST(request: Request, { params }: { params: IParams }) {
