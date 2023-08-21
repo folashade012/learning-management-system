@@ -20,7 +20,7 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/app/components/ui/dropdown-menu";
-// import { CartSheet } from "@/app/components/cart-sheet";
+import { CartSheet } from "@/app/components/cart-sheet";
 import { Combobox } from "@/app/components/combobox";
 import { Icons } from "@/app/components/icons";
 import { MainNav } from "@/app/components/layout/main-nav";
@@ -43,7 +43,7 @@ export function SiteHeader({ user, basketItems }: SiteHeaderProps) {
         <div className='flex flex-1 items-center justify-end space-x-4'>
           <nav className='flex items-center space-x-2'>
             <Combobox />
-            {/* <CartSheet basketItems={basketItems} currentUser={user} /> */}
+            <CartSheet basketItems={basketItems} currentUser={user} />
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
