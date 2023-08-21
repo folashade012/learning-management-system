@@ -4,7 +4,7 @@ import { Separator } from "@/app/components/ui/separator";
 import { ScrollArea } from "@/app/components/ui/scroll-area";
 import { MainNav } from "@/app/components/layout/main-nav";
 import { CourseSidebar } from "@/app/components/layout/course-sidebar";
-import QuizClient from "./quiz-client";
+import QuizClient from "../../../components/quiz-client";
 
 interface IParams {
   courseId: string;

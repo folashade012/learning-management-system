@@ -1,4 +1,4 @@
-import { type Metadata } from "next";
+// import { type Metadata } from "next";
 
 import {
   Card,
@@ -8,10 +8,10 @@ import {
 } from "@/app/components/ui/card";
 import { Shell } from "@/app/components/shell";
 
-export const metadata: Metadata = {
-  title: "Reset Password",
-  description: "Reset Password",
-};
+// export const metadata: Metadata = {
+//   title: "Reset Password",
+//   description: "Reset Password",
+// };
 
 export default async function ResetPasswordPage() {
   return (

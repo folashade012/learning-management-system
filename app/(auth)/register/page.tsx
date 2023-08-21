@@ -1,4 +1,4 @@
-import { type Metadata } from "next";
+// import { type Metadata } from "next";
 import Link from "next/link";
 
 import {
@@ -11,10 +11,10 @@ import {
 import { Shell } from "@/app/components/shell";
 import { RegisterForm } from "@/app/components/auth/register-form";
 
-export const metadata: Metadata = {
-  title: "Register",
-  description: "Sign up for an account",
-};
+// export const metadata: Metadata = {
+//   title: "Register",
+//   description: "Sign up for an account",
+// };
 
 export default async function SignUpPage() {
   return (

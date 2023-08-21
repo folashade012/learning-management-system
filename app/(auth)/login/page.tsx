@@ -1,4 +1,4 @@
-import { type Metadata } from "next";
+// import { type Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -12,10 +12,10 @@ import {
 import { LoginForm } from "@/app/components/auth/login-form";
 import { Shell } from "@/app/components/shell";
 
-export const metadata: Metadata = {
-  title: "Login",
-  description: "Sign in to your account",
-};
+// export const metadata: Metadata = {
+//   title: "Login",
+//   description: "Sign in to your account",
+// };
 
 export default async function LoginPage() {
   // const user = await currentUser();

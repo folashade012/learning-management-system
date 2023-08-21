@@ -1,5 +1,5 @@
 import "./globals.css";
-import type { Metadata } from "next";
+// import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import { Toaster } from "@/app/components/ui/toaster";
@@ -7,11 +7,11 @@ import { ThemeProvider } from "@/providers/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Learning Management System",
-  description:
-    "Developing An Effective Cyber Security Awareness & E-Learning Platform",
-};
+// export const metadata: Metadata = {
+//   title: "Learning Management System",
+//   description:
+//     "Developing An Effective Cyber Security Awareness & E-Learning Platform",
+// };
 
 export default function RootLayout({
   children,

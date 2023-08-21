@@ -1,7 +1,7 @@
 import getCourseById from "@/app/actions/getCourseById";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
-import CourseClient from "./course-client";
+import CourseClient from "../../../components/course-client";
 import { Separator } from "@/app/components/ui/separator";
 import { ScrollArea } from "@/app/components/ui/scroll-area";
 import { MainNav } from "@/app/components/layout/main-nav";

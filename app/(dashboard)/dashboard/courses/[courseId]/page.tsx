@@ -1,5 +1,5 @@
 import getCourseById from "@/app/actions/getCourseById";
-import UpdateCourse from "./update-course";
+import UpdateCourse from "../../../../components/update-course";
 
 interface IParams {
   courseId: string;
