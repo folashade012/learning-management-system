@@ -23,7 +23,9 @@ export default async function page({ params }: { params: IParams }) {
           <Separator orientation='vertical' />
           <div className='flex flex-1 items-center space-x-5'>
             <nav className='flex items-center space-x-2'>
-              <h1 className='capitalize font-bold'>{course.name}</h1>
+              <h1 className='capitalize font-bold'>
+                {course ? course.name : ""}
+              </h1>
             </nav>
           </div>
         </div>
@@ -32,16 +34,16 @@ export default async function page({ params }: { params: IParams }) {
         <aside className='fixed top-14 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r md:sticky md:block'>
           <ScrollArea className='py-6 pr-6 lg:py-8'>
             <CourseSidebar
-              items={course.sections}
+              items={course?.sections}
               completed={currentUser?.completed}
             />
           </ScrollArea>
         </aside>
         <div>
           <CourseClient
-            courseId={course.id}
-            sections={course.sections}
-            completed={currentUser.completed}
+            courseId={course?.id}
+            sections={course?.sections}
+            completed={currentUser?.completed}
           />
         </div>
       </div>

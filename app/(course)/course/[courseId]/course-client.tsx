@@ -21,7 +21,7 @@ interface Section {
 interface CourseClientProp {
   sections: Section[];
   completed: any;
-  courseId: string;
+  courseId: string | undefined;
 }
 
 export default function CourseClient({

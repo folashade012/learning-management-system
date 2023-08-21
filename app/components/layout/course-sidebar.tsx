@@ -7,6 +7,7 @@ interface SidebarProp {
   id: string;
   url: string;
   name: string;
+  courseId: string;
 }
 
 export interface CourseSidebarProps {
