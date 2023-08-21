@@ -6,6 +6,7 @@ import { Separator } from "@/app/components/ui/separator";
 import { ScrollArea } from "@/app/components/ui/scroll-area";
 import { MainNav } from "@/app/components/layout/main-nav";
 import { CourseSidebar } from "@/app/components/layout/course-sidebar";
+import { redirect } from "next/navigation";
 
 interface IParams {
   courseId: string;
@@ -14,6 +15,10 @@ interface IParams {
 export default async function page({ params }: { params: IParams }) {
   const course = await getCourseById(params);
   const currentUser = await getCurrentUser();
+
+  if (!currentUser) {
+    redirect("/login");
+  }
 
   return (
     <div className='flex min-h-screen flex-col'>

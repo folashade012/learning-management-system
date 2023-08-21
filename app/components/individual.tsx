@@ -13,7 +13,6 @@ import {
   CardFooter,
   CardTitle,
 } from "@/app/components/ui/card";
-import { Icons } from "@/app/components/icons";
 
 import CartButton from "@/app/components/ui/cart-button";
 import BackButton from "@/app/components/ui/back-button";
