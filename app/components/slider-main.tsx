@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Icons } from "@/app/components/icons";
 
 interface CarouselProps {
-  images: string[];
+  images: string[] | [];
 }
 export default function SliderMain({ images }: CarouselProps) {
   const [current, setCurrent] = useState(0);

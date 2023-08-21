@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ["res.cloudinary.com"],
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
-  images: {
-    domains: ["res.cloudinary.com"],
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 

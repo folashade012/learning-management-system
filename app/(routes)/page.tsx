@@ -7,15 +7,15 @@ import CourseCard from "@/app/components/course-card";
 import { Header } from "../components/ui/header";
 import { Separator } from "../components/ui/separator";
 
-const images = ["/images/hero1.jpg", "/images/hero2.jpg"];
-
 interface HomeProps {
-  searchParams: string;
+  searchParams: string | null;
 }
 
 export default async function Home({ searchParams }: HomeProps) {
   const courses = await getAllCourses(searchParams);
   const currentUser = await getCurrentUser();
+
+  const images = ["/images/hero1.jpg", "/images/hero2.jpg"];
 
   return (
     <Shell as='div' className='gap-12'>

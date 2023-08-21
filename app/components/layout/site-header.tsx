@@ -20,14 +20,14 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/app/components/ui/dropdown-menu";
-import { CartSheet } from "@/app/components/cart-sheet";
+// import { CartSheet } from "@/app/components/cart-sheet";
 import { Combobox } from "@/app/components/combobox";
 import { Icons } from "@/app/components/icons";
 import { MainNav } from "@/app/components/layout/main-nav";
 
 interface SiteHeaderProps {
   user: SafeUser | null;
-  basketItems: any;
+  basketItems: any | null;
 }
 
 export function SiteHeader({ user, basketItems }: SiteHeaderProps) {
@@ -43,7 +43,7 @@ export function SiteHeader({ user, basketItems }: SiteHeaderProps) {
         <div className='flex flex-1 items-center justify-end space-x-4'>
           <nav className='flex items-center space-x-2'>
             <Combobox />
-            <CartSheet basketItems={basketItems} currentUser={user} />
+            {/* <CartSheet basketItems={basketItems} currentUser={user} /> */}
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -70,7 +70,7 @@ export function SiteHeader({ user, basketItems }: SiteHeaderProps) {
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
-                    <DropdownMenuItem asChild>
+                    <DropdownMenuItem asChild disabled>
                       <Link href='/dashboard/account'>
                         <Icons.user
                           className='mr-2 h-4 w-4'
@@ -80,7 +80,7 @@ export function SiteHeader({ user, basketItems }: SiteHeaderProps) {
                         <DropdownMenuShortcut>⇧⌘A</DropdownMenuShortcut>
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
+                    <DropdownMenuItem asChild disabled>
                       <Link href='/create'>
                         <Icons.file
                           className='mr-2 h-4 w-4'
