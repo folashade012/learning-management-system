@@ -1,7 +1,7 @@
 import { SiteFooter } from "@/app/components/layout/site-footer";
 
 interface IParams {
-  courseId: string;
+  courseId: string | null;
 }
 
 export default async function DashboardLayout({

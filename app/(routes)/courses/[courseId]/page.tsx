@@ -1,5 +1,5 @@
 import getCourseById from "@/app/actions/getCourseById";
-import Induvidual from "../individual";
+import Induvidual from "../../../components/individual";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { Shell } from "@/app/components/shell";
 
