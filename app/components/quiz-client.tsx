@@ -56,69 +56,82 @@ export default function QuizClient({ quizzes }: QuizClientProp) {
 
   return (
     <>
-      {showScore ? (
-        <div className='w-full h-screen grid place-content-center gap-4'>
-          <h1 className='font-bold text-lg'>
-            You scored {score} out of {quizzes.questions.length}
-          </h1>
-          <div className='w-full flex  items-center space-x-10 justify-center  lg:px-7'>
-            <Button
-              onClick={() => {
-                resetQuiz;
-              }}
-            >
-              Retake quiz
-            </Button>
+      <Button
+        onClick={() => {
+          router.push(`/course/${quizzes.courseId}`);
+        }}
+        className='mt-10 mb-5'
+      >
+        Back to Course
+      </Button>
 
-            <Button
-              onClick={() => {
-                router.push("/");
-              }}
-            >
-              Home
-            </Button>
-          </div>
-        </div>
-      ) : (
-        <Shell>
-          <div>
-            <Card>
-              <CardHeader className='flex flex-row items-center'>
-                <CardTitle className='mr-5 text-center divide-y divide-zinc-600/50'>
-                  <div>{currentQuestion + 1}</div>
-                  <div className='text-base text-slate-400'>
-                    {quizzes.questions.length}
-                  </div>
-                </CardTitle>
-                <CardTitle className='line-clamp-1 capitalize text-sm lg:text-base'>
-                  {quizzes.questions[currentQuestion].question}
-                </CardTitle>
-              </CardHeader>
-            </Card>
+      <Shell className='w-full'>
+        <div className='mx-auto'>
+          {showScore ? (
+            <div className='w-full h-96 grid place-content-center gap-4 max-w-4xl'>
+              <h1 className='font-bold text-lg'>
+                You scored {score} out of {quizzes.questions.length}
+              </h1>
+              <div className='w-full flex  mt-2 items-center space-x-10 justify-center'>
+                <Button
+                  onClick={() => {
+                    resetQuiz();
+                  }}
+                >
+                  Retake quiz
+                </Button>
 
-            <div className='flex flex-col gap-6 mt-20'>
-              {quizzes.questions[currentQuestion].answers.map(
-                (answer: any, index: number) => (
-                  <Card
-                    key={index}
-                    className='cursor-pointer flex items-center pl-2 gap-3 hover:bg-black hover:text-white'
-                    onClick={() => {
-                      handleAnswerOptionClick(answer.correct);
-                    }}
-                  >
-                    <Card className='h-8 w-8 text-sm flex items-center justify-center'>
-                      {index + 1}
-                    </Card>
-                    <CardContent className='p-2 font-normal'>
-                      {answer.text}
-                    </CardContent>
-                  </Card>
-                )
-              )}
+                <Button
+                  onClick={() => {
+                    router.push("/");
+                  }}
+                >
+                  Home
+                </Button>
+              </div>
             </div>
-          </div>
-        </Shell>
-      )}
+          ) : (
+            <Shell>
+              <div className='lg:min-w-[840px] max-w-4xl'>
+                <Card>
+                  <CardHeader className='flex flex-row items-center'>
+                    <CardTitle className='mr-5 text-center divide-y divide-zinc-600/50'>
+                      <div>{currentQuestion + 1}</div>
+                      <div className='text-base text-slate-400'>
+                        {quizzes.questions.length}
+                      </div>
+                    </CardTitle>
+                    <CardTitle className='line-clamp-1 capitalize text-sm lg:text-base'>
+                      {quizzes.questions[currentQuestion].question}
+                    </CardTitle>
+                  </CardHeader>
+                </Card>
+
+                <div className='flex flex-col gap-6 mt-20'>
+                  {quizzes.questions[currentQuestion].answers.map(
+                    (answer: any, index: number) => (
+                      <Card
+                        key={index}
+                        className='cursor-pointer flex items-center pl-2 gap-3 hover:bg-black hover:text-white'
+                        onClick={() => {
+                          handleAnswerOptionClick(answer.correct);
+                        }}
+                      >
+                        <Card className='h-8 w-8 text-sm flex items-center justify-center'>
+                          {index + 1}
+                        </Card>
+                        <CardContent className='p-2 font-normal'>
+                          {answer.text}
+                        </CardContent>
+                      </Card>
+                    )
+                  )}
+                </div>
+              </div>
+            </Shell>
+          )}
+        </div>
+      </Shell>
     </>
   );
 }

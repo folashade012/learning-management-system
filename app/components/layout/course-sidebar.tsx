@@ -36,6 +36,7 @@ export function CourseSidebar({ items, completed }: CourseSidebarProps) {
           </div>
         );
       })}
+      <h1 className='p-2 text-muted-foreground font-bold'>Quiz</h1>
     </div>
   );
 }

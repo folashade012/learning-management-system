@@ -49,7 +49,7 @@ export function LoginForm() {
         if (callback?.ok) {
           toast.success("Logged In");
           router.refresh();
-          router.back();
+          router.push("/");
         }
 
         if (callback?.error) {

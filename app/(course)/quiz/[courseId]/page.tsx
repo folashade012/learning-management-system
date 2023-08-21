@@ -26,18 +26,8 @@ export default async function page({ params }: { params: IParams }) {
           </div>
         </div>
       </header>
-      <div className='container flex-1 items-start md:grid md:grid-cols-[240px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-10'>
-        <aside className='fixed top-14 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r md:sticky md:block'>
-          <ScrollArea className='py-6 pr-6 lg:py-8'>
-            <CourseSidebar
-              items={course.sections}
-              completed={course.user.completed}
-            />
-          </ScrollArea>
-        </aside>
-        <div>
-          <QuizClient quizzes={course?.quiz[0]} />
-        </div>
+      <div className='container'>
+        <QuizClient quizzes={course?.quiz[0]} />
       </div>
     </div>
   );
