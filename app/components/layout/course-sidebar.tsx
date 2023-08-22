@@ -2,6 +2,7 @@
 
 import type { SidebarNavItem } from "@/app/types";
 import { Checkbox } from "@/app/components/ui/checkbox";
+import { useEffect } from "react";
 
 interface SidebarProp {
   id: string;

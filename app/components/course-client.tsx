@@ -39,10 +39,7 @@ export default function CourseClient({
     const currentID = completed[completed.length - 1];
     const currentIndex = sections.findIndex((item) => item.id === currentID);
 
-    console.log(currentIndex + 1);
-    console.log(sections.length);
-
-    if (currentIndex + 1 === sections.length) {
+    if (currentIndex === sections.length) {
       setSection(sections[currentIndex]);
     } else {
       const progress = sections[currentIndex + 1];
@@ -50,7 +47,7 @@ export default function CourseClient({
     }
 
     setLoading(false);
-  }, [completed, sections]);
+  }, []);
 
   const prev = () => {
     if (sections.length === 0) {
@@ -67,7 +64,7 @@ export default function CourseClient({
     setSection(previousSection);
   };
 
-  const next = useCallback(async () => {
+  const next = async () => {
     if (sections.length === 0) {
       return;
     }
@@ -96,7 +93,7 @@ export default function CourseClient({
     } catch (error) {
       toast.error("Something went wrong.");
     }
-  }, [sections, router]);
+  };
 
   return (
     <>
