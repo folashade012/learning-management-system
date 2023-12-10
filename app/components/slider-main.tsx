@@ -24,7 +24,7 @@ export default function SliderMain({ images }: CarouselProps) {
   };
 
   return (
-    <div className='relative'>
+    <div className='relative w-full'>
       <div>
         <button
           onClick={prevImage}
